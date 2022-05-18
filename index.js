@@ -1,5 +1,11 @@
-const url = "https://icanhazdadjoke.com/";
+//Constantes de URL´s chistes y array contenedor de puntuaciones
+
+const url1 = "https://icanhazdadjoke.com/";
+const url2 = "https://api.chucknorris.io/jokes/random";
 const reportAcudits = [];
+
+
+//Constantes y fetching de la API meteorológica
 const weatherUrl =
   "http://api.weatherapi.com/v1/current.json?key=83be30f2876a48efa5f163236221805&q=Barcelona&aqi=no";
 const weatherContainer = document.querySelector("#weatherContainer");
@@ -18,7 +24,9 @@ fetch(weatherUrl, options)
   .catch((err) => console.error(err.message));
 
 
-async function fetchJoke() {
+  //Fetching las API´s de chistes, uso de Math.random para elegir al azar una de las dos
+function fetchJoke() {
+  const url = Math.floor(Math.random() * 10) % 2 == 0 ? url1 : url2;
   fetch(url, {
     headers: {
       Accept: "application/json",
@@ -26,11 +34,14 @@ async function fetchJoke() {
   })
     .then((response) => response.json())
     .then((data) => {
-      const joke = data.joke;
-      showJoke(joke)
+      const joke = url == url1 ? data.joke : data.value;
+      showJoke(joke);
     })
     .catch((error) => console.log(error.message));
 }
+
+
+//Una vez descargado y parseado el chiste se añade al HTML
 function showJoke(joke) {
   const container = document.querySelector("#app");
   const content = document.createElement("h2");
@@ -44,9 +55,16 @@ function showJoke(joke) {
 }
 
 
+//Función que se encarga de: crear los botones una vez se ha mostrado el chiste
+//Inutiliza los botones después de puntuar
+//Recoge la puntuacion y la añade a un objeto con fecha y el chistes
+//Añade el objeto al array reportAcudits[]
+//Pasa el array por consola
 function jokeScore(score) {
-  const buttons = document.querySelectorAll('.scoreButton');
-  buttons.forEach(button => button.setAttribute('style','pointer-events: none' ));
+  const buttons = document.querySelectorAll(".scoreButton");
+  buttons.forEach((button) =>
+    button.setAttribute("style", "pointer-events: none")
+  );
   const jokeContent = document.querySelector("#app").textContent;
   const date = new Date();
   let txt = date.toISOString();
@@ -59,4 +77,3 @@ function jokeScore(score) {
   reportAcudits.push(scoreData);
   console.log(reportAcudits);
 }
-
