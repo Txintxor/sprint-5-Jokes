@@ -26,7 +26,7 @@ fetch(weatherUrl, options)
 
   //Fetching las API´s de chistes, uso de Math.random para elegir al azar una de las dos
 function fetchJoke() {
-  const url = Math.floor(Math.random() * 10) % 2 == 0 ? url1 : url2;
+  const url = Math.floor(Math.random()* 2) == 0 ? url1 : url2;
   fetch(url, {
     headers: {
       Accept: "application/json",
