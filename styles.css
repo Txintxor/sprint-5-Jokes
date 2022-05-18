@@ -67,6 +67,7 @@ table {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: red;
   background:url("/img/back.jpg") no-repeat center;
   background-size: 100% 100%;
 }
@@ -75,9 +76,9 @@ table {
   position: fixed;
   top: 0;
   left: 0;
+  width: 10rem;
   font-size: 3rem;
   padding: 1rem;
-  background: white;
   width: fit-content;
   justify-content: center;
 

@@ -13,8 +13,6 @@ const options = {
 fetch(weatherUrl, options)
   .then((response) => response.json())
   .then((response) => {
-    // console.log();
-    // console.log()
     weatherContainer.innerHTML = `<h1>${response.current.condition.text} <img src="${response.current.condition.icon}"></h1>`;
   })
   .catch((err) => console.error(err.message));
@@ -33,20 +31,22 @@ async function fetchJoke() {
     })
     .catch((error) => console.log(error.message));
 }
-
 function showJoke(joke) {
   const container = document.querySelector("#app");
   const content = document.createElement("h2");
-  container.innerHTML = '';
+  const scoreUl = document.querySelector("#scoreContainer");
+  container.innerHTML = "";
+  scoreUl.innerHTML = `<li class="scoreButton" id="button1"><a onclick="jokeScore(1)">&#128529;</a></li>
+  <li class="scoreButton" id="button2"><a onclick="jokeScore(2)">&#128527;</a></li>
+  <li class="scoreButton" id="button3"><a onclick="jokeScore(3)">&#129315;</a></li>`;
   container.appendChild(content);
   content.innerHTML = joke;
 }
 
+
 function jokeScore(score) {
-  const buttons = document.querySelectorAll(".scoreButton");
-  buttons.forEach((button) =>
-    button.setAttribute("style", "pointer-events: none")
-  );
+  const buttons = document.querySelectorAll('.scoreButton');
+  buttons.forEach(button => button.setAttribute('style','pointer-events: none' ));
   const jokeContent = document.querySelector("#app").textContent;
   const date = new Date();
   let txt = date.toISOString();
@@ -55,5 +55,8 @@ function jokeScore(score) {
     score: score,
     date: txt,
   };
+
+  reportAcudits.push(scoreData);
+  console.log(reportAcudits);
 }
 
