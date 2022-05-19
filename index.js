@@ -7,7 +7,7 @@ const reportAcudits = [];
 
 //Constantes y fetching de la API meteorológica
 const weatherUrl =
-  "http://api.weatherstack.com/current?access_key=ab0c8046c844e875cff2853d7648ba5a&query=Barcelona";
+  "http://api.weatherapi.com/v1/current.json?key=a0b93804ac4b45ccb7a72900221905&q=Barcelona&aqi=no";
 const weatherContainer = document.querySelector("#weatherContainer");
 const options = {
   method: "GET",
@@ -19,7 +19,7 @@ const options = {
 fetch(weatherUrl, options)
   .then((response) => response.json())
   .then((data) => {
-    weatherContainer.innerHTML = `<h1>${data.current.temperature}</h1><img id="weatherIcon"src="${data.current.weather_icons}">`;
+    weatherContainer.innerHTML = `<h1>${data.current.temp_c}</h1><img id="weatherIcon"src="${data.current.condition.icon}">`;
   
   })
   .catch((err) => console.error(err.message));

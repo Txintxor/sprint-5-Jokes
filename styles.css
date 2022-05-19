@@ -69,23 +69,67 @@ table {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: url("/img/blob.svg") no-repeat center;
-  background-size: 100% 100%;
+  /* background: url("/img/blob.svg") no-repeat center;
+  background-size: 100% 100%; */
 }
 
-#blob1, #blob2 {
+#blobContainer {
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
+#blob1,
+#blob2,
+#blob3,
+#blob4,
+#blob5,
+#blob6 {
   position: absolute;
   width: 40rem;
   height: 20rem;
-  top: 20%;
-  left: 80%;
-  background: url("/img/blob2.svg") no-repeat;
+}
+
+#blob1 {
+  top: 0;
+  left: 22%;
+  width: 50%;
+  height: auto;
 }
 
 #blob2 {
+  top: 4%;
+  left: 4%;
+  width: 25%;
+  height: auto;
+}
+
+#blob3 {
+  top: 69%;
+  left: 75%;
+  width: 15%;
+  height: auto;
+}
+
+#blob4 {
+  top: 34%;
+  left: 76%;
+  width: 15%;
+  height: auto;
+}
+
+#blob5 {
   top: 60%;
   left: 5%;
-  background: url("/img/blob3.svg") no-repeat;
+  width: 10%;
+  height: auto;
+}
+
+#blob6 {
+  top: 5%;
+  left: 65%;
+  width: 12%;
+  height: auto;
 }
 
 #weatherContainer {
